@@ -1,0 +1,24 @@
+FROM <IMAGE>
+<QEMU>
+
+ARG BUILD_DATE
+ARG VCS_REF
+ARG VCS_URL
+ARG VERSION
+ARG ARCH=<ARCH>
+
+RUN apk add -U --no-cache \
+  drill \
+  curl \
+  net-tools \
+  tcpdump \
+  tcpflow
+
+LABEL de.uniba.ktr.tools.network.version=$VERSION \
+    de.uniba.ktr.tools.network.name="Network Tools" \
+    de.uniba.ktr.tools.network.docker.cmd="docker run -d  unibaktr/tools" \
+    de.uniba.ktr.tools.network.vendor="Marcel Grossmann" \
+    de.uniba.ktr.tools.network.architecture=$ARCH \
+    de.uniba.ktr.tools.network.vcs-ref=$VCS_REF \
+    de.uniba.ktr.tools.network.vcs-url=$VCS_URL \
+    de.uniba.ktr.tools.network.build-date=$BUILD_DATE \
